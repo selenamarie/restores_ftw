@@ -46,10 +46,12 @@
 
     <div id="pg_restore" class="step slide" data-x="1000" data-y="-1500">
         <p>How do I restore?</p>
-        <q>Restoring:</q>
-        <p><code><b>pg_restore</b> backup.sql</code></p>
-        <p><code><b>psql</b> -f backup.sql database</code></p>
-        <p>Copy your base backup. Start up the instance of the database.</p>
+        <q>There are two kinds of restores:</q>
+        <p><code><b>pg_restore</b> backup.sql</code><br/>
+        <code><b>psql</b> -f backup.sql database</code></p>
+        <p>Be sure you've got globals too (<code>pg_dumpall --globals</code>). Big database? Use <code>-Fc</code> with <code>pg_dump</code>.</p>
+        <p>OR</p>
+        <p>Copy your <b>base backup</b> from your backups. Start up the instance of the database.</p>
     </div>
 
     <div id="pg_dump" class="step slide" data-x="2000" data-y="-1500">
@@ -69,6 +71,13 @@
         <q>Why base backups?</q>
         <q><b>No long transactions</b> holding a lock, Can <b>stream</b> a base backup over DB socket, Exact <b>binary copy</b> of master, Can <b>backup from a replica</b></q>
     </div>
+
+    <div id="base_backups_not" class="step slide" data-x="5000" data-y="-1500">
+        <p>How do I restore?</p>
+        <q>Why <b>not</b> base backups?</q>
+        <q>Takes a lot of <b>disk space</b>, Need to <b>test them regularly</b> to be sure you did it right</q>
+    </div>
+
 
     <div id="how_long_will_it_take_1" class="step slide" data-x="1000" data-y="-500">
         <p>How long will it take to restore?</p>
@@ -90,75 +99,75 @@
         <q>Also, find out: how long does it take to detect that the database is offline.</q>
     </div>
 
-    <div id="choosing" class="step slide" data-x="5000" data-y="-1500">
+    <div id="choosing" class="step slide" data-x="6000" data-y="-1500">
         <q>Choosing the right backup and restore strategy means thinking about: How do I restore? How long will it take? How much time do I have?</q>
     </div>
 
-    <div id="test_restores" class="step slide" data-x="5000" data-y="-500">
+    <div id="test_restores" class="step slide" data-x="7000" data-y="-500">
         <q>But mostly, the right strategy starts with testing your restores, regularly. Here are some ways not to do it, followed by what we do at Mozilla to test our restores.</q>
     </div>
 
-    <div id="restore_antipatterns_1" class="step slide" data-x="6000" data-y="-500">
+    <div id="restore_antipatterns_1" class="step slide" data-x="8000" data-y="-500">
         <p>Restore anti-patterns</p>
         <q>"The question."</q>
         <q>You make backups? -@fwenzel</q>
         <q>HAHAHAHAHAHA. Wait, what? -@sorenmacbeth</q>
     </div>
 
-    <div id="restore_antipatterns_3" class="step slide" data-x="7000" data-y="-500">
+    <div id="restore_antipatterns_3" class="step slide" data-x="9000" data-y="-500">
         <p>Restore anti-patterns</p>
         <q>"The Hail Mary."</q>
         <q>Testing during live recovery. -@techstepper</q>
     </div>
 
-    <div id="restore_antipatterns_4" class="step slide" data-x="8000" data-y="-500">
+    <div id="restore_antipatterns_4" class="step slide" data-x="10000" data-y="-500">
         <p>Restore triggering event anti-patterns</p>
         <q>"The Oops."</q>
         <q>sudo -rm -rf / -@tsantero</q>
     </div>
 
-    <div id="restore_antipatterns_2" class="step slide" data-x="9000" data-y="-500">
+    <div id="restore_antipatterns_2" class="step slide" data-x="11000" data-y="-500">
         <p>Restore triggering event anti-patterns</p>
         <q>"The Revolving Door."</q>
         <q>Fire the DBA. -@dcolish</q>
     </div>
 
 
-    <div id="restore_patterns_1" class="step slide" data-x="7000" data-y="-1500">
+    <div id="restore_patterns_1" class="step slide" data-x="8000" data-y="-1500">
         <p>Restore patterns</p>
         <q>"The stage refresh"</q>
         <q>Restore a copy of your database to your stage environment weekly</q>
     </div>
 
-    <div id="restore_patterns_2" class="step slide" data-x="8000" data-y="-1500">
+    <div id="restore_patterns_2" class="step slide" data-x="9000" data-y="-1500">
         <p>Restore patterns</p>
         <q>"Stop replica then pg_dump."</q>
         <q>Stop replication and run your pg_dump from there! Restart replication.<sup>*</sup></q>
         <span class="footnote"><sup>*</sup> Requires you to save up WAL.</span>
     </div>
 
-    <div id="restore_patterns_3" class="step slide" data-x="9000" data-y="-1500">
+    <div id="restore_patterns_3" class="step slide" data-x="10000" data-y="-1500">
         <p>Restore patterns</p>
         <q>"Partial restores to dev"</q>
         <q>Use your SQL dump to create mini versions of dev databases. Automatically.</q>
     </div>
 
-    <div id="restore_patterns_4" class="step slide" data-x="10000" data-y="-1500">
+    <div id="restore_patterns_4" class="step slide" data-x="11000" data-y="-1500">
         <p>Restore patterns</p>
         <q>"The controlled failover"</q>
         <q>Plan for regular failovers from master to replica. Document and fix what breaks.</q>
     </div>
 
 
-    <div id="tools_overview" class="step slide" data-x="11000" data-y="-1500">
-        <q>Start your backup odyssey <code><b>pg_basebackup</b></code>. It's core Postgres, can backup from replica and is fast.</q>
+    <div id="tools_overview" class="step slide" data-x="12000" data-y="-1500">
+        <q>Start your backup odyssey with <code><b>pg_basebackup</b></code>. It's core Postgres, can backup from replica and is fast.</q>
     </div>
-    <div id="tools_scripts" class="step slide" data-x="12000" data-y="-1500">
+    <div id="tools_scripts" class="step slide" data-x="13000" data-y="-1500">
         <q>I've started a <a href="https://wiki.postgresql.org/wiki/Binary_Replication_Tools">matrix of base backup tools.</a>
         And example scripts using these tools are here: <a href="https://github.com/selenamarie/pg_replication_demo">pg_replication_demo</a></q>
     </div>
 
-    <div id="final" class="step slide" data-x="13000" data-y="-1500">
+    <div id="final" class="step slide" data-x="14000" data-y="-1500">
         <p>Questions? Horror stories?</p>
         <q>Restores FTW</q>
         <q>Backup and recovery with PostgreSQL 9.2</q>
@@ -171,7 +180,7 @@
 </div>
 
 <script>
-if ("ontouchstart" in document.documentElement) { 
+if ("ontouchstart" in document.documentElement) {
     document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
 }
 </script>
