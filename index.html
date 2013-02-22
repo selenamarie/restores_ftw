@@ -32,7 +32,8 @@
         <q>Backup and recovery with PostgreSQL 9.2</q>
         <p>Selena Deckelmann</p>
         <p>Data Architect, Mozilla</p>
-        <p><a href="http://twitter.com/selenamarie">@selenamarie</a>, <a href="http://chesnok.com">Blog</a>, selena@mozilla.com</p>
+        <p>selena@mozilla.com</p>
+        <p><a href="http://twitter.com/selenamarie">@selenamarie</a>, <a href="http://chesnok.com">Blog</a></p>
     </div>
 
     <div id="big_questions" class="step slide" data-x="0" data-y="-1500">
@@ -43,6 +44,7 @@
     </div>
 
     <div id="pg_restore" class="step slide" data-x="1000" data-y="-1500">
+        <p>How do I restore?</p>
         <q>Restoring:</q>
         <p><b>pg_restore</b> backup.sql</p>
         <p>&nbsp;</P>
@@ -52,33 +54,48 @@
     </div>
 
     <div id="pg_dump" class="step slide" data-x="2000" data-y="-1500">
+        <p>How do I restore?</p>
         <q>Why use SQL dumps?</q>
         <q>Highly <b>compressable</b>, <b>Reasonably fast</b> up to about 4 TB with good disks, <b>Diff</b>-able, <b>Verify</b> you can read all your data</q>
     </div>
 
     <div id="pg_dump_not" class="step slide" data-x="3000" data-y="-1500">
+        <p>How do I restore?</p>
         <q>Why <b>not</b> use SQL dumps?</q>
         <q>Long-running <b>transaction</b> holds a lock, No <b>incrementals</b>, Doesn't work so great with huge-ass dbs.</q>
     </div>
 
     <div id="base_backups" class="step slide" data-x="4000" data-y="-1500">
+        <p>How do I restore?</p>
         <q>Why base backups?</q>
         <q><b>No long transactions</b> holding a lock, Can <b>stream</b> a base backup over DB socket, Exact <b>binary copy</b> of master, Can <b>backup from a replica</b></q>
     </div>
 
-    <div id="choosing" class="step slide" data-x="5000" data-y="-1500">
-        <q>Choosing the right backup and restore strategy means thinking about: high availability, mean-time-to-recovery, training plan, recovery test plan.</q>
+    <div id="how_long_will_it_take_1" class="step slide" data-x="1000" data-y="-500">
+        <p>How long will it take to restore?</p>
+        <q>Track how long it takes to backup your database.<sup>*</sup> Preferably in a graph.</q>
+        <span class="footnote"><sup>*</sup> Sad, unsolved mystery story time.</span>
     </div>
 
-    <div id="choosing_ask" class="step slide" data-x="5000" data-y="-500">
+    <div id="how_long_will_it_take_2" class="step slide" data-x="2000" data-y="-500">
+        <p>How long will it take to restore?</p>
+        <q>Test and time your restores. More on this later!</q>
+    </div>
+
+    <div id="choosing_ask" class="step slide" data-x="1000" data-y="500">
+        <p>How much time do I have to restore?</p>
         <q>Ask how long the database can be completely offline. Then test how long it takes to get <b>everything</b> back up after the database goes offline.</q>
     </div>
 
-    <div id="choosing_ask_2" class="step slide" data-x="5000" data-y="500">
+    <div id="choosing_ask_2" class="step slide" data-x="2000" data-y="500">
         <q>Also, find out: how long does it take to detect that the database is offline.</q>
     </div>
 
-    <div id="test_restores" class="step slide" data-x="5000" data-y="1500">
+    <div id="choosing" class="step slide" data-x="5000" data-y="-1500">
+        <q>Choosing the right backup and restore strategy means thinking about: How do I restore? How long will it take? How much time do I have?</q>
+    </div>
+
+    <div id="test_restores" class="step slide" data-x="5000" data-y="-500">
         <q>But mostly, the right strategy starts with testing your restores, regularly. Here are some ways not to do it, followed by what we do at Mozilla to test our restores.</q>
     </div>
 
