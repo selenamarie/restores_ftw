@@ -13,6 +13,7 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
     <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
     
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -30,26 +31,24 @@
     <div id="backups-wtf" class="step slide" data-x="-1000" data-y="-1500">
         <q>Restores FTW</q>
         <q>Backup and recovery with PostgreSQL 9.2</q>
-        <p>Selena Deckelmann</p>
-        <p>Data Architect, Mozilla</p>
-        <p>selena@mozilla.com</p>
-        <p><a href="http://twitter.com/selenamarie">@selenamarie</a>, <a href="http://chesnok.com">Blog</a></p>
+        <p>Selena Deckelmann<br/>
+        Data Architect, Mozilla<br/>
+        selena@mozilla.com<br/>
+        <a href="http://twitter.com/selenamarie">@selenamarie</a>, <a href="http://chesnok.com">Blog</a></p>
     </div>
 
     <div id="big_questions" class="step slide" data-x="0" data-y="-1500">
-        <q>There are three important questions: 
-            How <b>do I restore</b>? 
-            How <b>long will it take</b> to restore? 
-            How <b>much time do I have</b> to restore?</q>
+        <q>There are three important questions: <br/>
+            How <b>do I restore</b>? <br/>
+            How <b>long will it take</b> to restore? <br/>
+            How much <b>time do I have</b> to restore?<br/></q>
     </div>
 
     <div id="pg_restore" class="step slide" data-x="1000" data-y="-1500">
         <p>How do I restore?</p>
         <q>Restoring:</q>
-        <p><b>pg_restore</b> backup.sql</p>
-        <p>&nbsp;</P>
-        <p><b>psql</b> -f backup.sql database</p>
-        <p>&nbsp;</P>
+        <p><code><b>pg_restore</b> backup.sql</code></p>
+        <p><code><b>psql</b> -f backup.sql database</code></p>
         <p>Copy your base backup. Start up the instance of the database.</p>
     </div>
 
@@ -62,7 +61,7 @@
     <div id="pg_dump_not" class="step slide" data-x="3000" data-y="-1500">
         <p>How do I restore?</p>
         <q>Why <b>not</b> use SQL dumps?</q>
-        <q>Long-running <b>transaction</b> holds a lock, No <b>incrementals</b>, Doesn't work so great with huge-ass dbs.</q>
+        <q>Long-running <b>transaction</b> holds a lock, No <b>incrementals</b>, Doesn't work so great with huge dbs.</q>
     </div>
 
     <div id="base_backups" class="step slide" data-x="4000" data-y="-1500">
@@ -152,7 +151,7 @@
 
 
     <div id="tools_overview" class="step slide" data-x="11000" data-y="-1500">
-        <q>Start your backup odyssey <b>pg_basebackup</b>. It's core Postgres, can backup from replica and is fast.</q>
+        <q>Start your backup odyssey <code><b>pg_basebackup</b></code>. It's core Postgres, can backup from replica and is fast.</q>
     </div>
     <div id="tools_scripts" class="step slide" data-x="12000" data-y="-1500">
         <q>I've started a <a href="https://wiki.postgresql.org/wiki/Binary_Replication_Tools">matrix of base backup tools.</a>
@@ -160,11 +159,13 @@
     </div>
 
     <div id="final" class="step slide" data-x="13000" data-y="-1500">
-        <q>Questions? Horror stories?</q>
+        <p>Questions? Horror stories?</p>
         <q>Restores FTW</q>
-        <p>Selena Deckelmann</p>
-        <p>Data Architect, Mozilla</p>
-        <p><a href="http://twitter.com/selenamarie">@selenamarie</a>, <a href="http://chesnok.com">Blog</a>, selena@mozilla.com</p>
+        <q>Backup and recovery with PostgreSQL 9.2</q>
+        <p>Selena Deckelmann<br/>
+        Data Architect, Mozilla<br/>
+        selena@mozilla.com<br/>
+        <a href="http://twitter.com/selenamarie">@selenamarie</a>, <a href="http://chesnok.com">Blog</a></p>
     </div>
 
 </div>
